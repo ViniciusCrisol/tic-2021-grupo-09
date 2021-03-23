@@ -2,13 +2,13 @@ import path from 'path';
 import User from '../models/User';
 
 class EmailRepository {
-  joinTemplatePath(fileName) {
+  #joinTemplatePath(fileName) {
     return path.join(__dirname, '..', 'views', 'emails', fileName);
   }
 
   getEmailTemplate(template) {
     if (template === 'welcome') {
-      return this.joinTemplatePath('welcome.ejs');
+      return this.#joinTemplatePath('welcome.ejs');
     }
   }
 

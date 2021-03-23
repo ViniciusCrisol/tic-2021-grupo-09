@@ -2,7 +2,7 @@ import path from 'path';
 import User from '../models/User';
 
 class PdfRepository {
-  joinTemplatePath(fileName) {
+  #joinTemplatePath(fileName) {
     return path.join(__dirname, '..', 'views', 'documents', fileName);
   }
 
@@ -12,7 +12,7 @@ class PdfRepository {
 
   getPdfTemplate(template) {
     if (template === 'users-report') {
-      return this.joinTemplatePath('users_report.ejs');
+      return this.#joinTemplatePath('users_report.ejs');
     }
   }
 

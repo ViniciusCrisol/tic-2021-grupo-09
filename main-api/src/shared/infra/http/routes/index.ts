@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
 import backofficeRouter from './backoffice.routes';
-import accountsRouter from '@modules/accounts/infra/http/routes/accounts.routes';
-import accountSessionsRouter from '@modules/accounts/infra/http/routes/account.sessions.routes';
+import accountsRouter from '@modules/Accounts/infra/http/routes/accounts.routes';
+import accountSessionsRouter from '@modules/Accounts/infra/http/routes/account.sessions.routes';
 
 const routes = Router();
 
