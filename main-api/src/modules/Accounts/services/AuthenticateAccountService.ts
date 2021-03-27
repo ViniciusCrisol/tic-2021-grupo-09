@@ -9,7 +9,7 @@ import IAccountsRepository from '../repositories/IAccountsRepository';
 import Account from '../infra/typeorm/entities/Account';
 
 interface IRequest {
-  email: string;
+  user_email: string;
   password: string;
 }
 
@@ -28,8 +28,8 @@ class AuthenticateAccountService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute({ email, password }: IRequest): Promise<IResponse> {
-    const account = await this.accountsRepository.findByEmail(email);
+  public async execute({ user_email, password }: IRequest): Promise<IResponse> {
+    const account = await this.accountsRepository.findByEmail(user_email);
     if (!account) {
       throw new AppError(authenticationFail.message, authenticationFail.status);
     }

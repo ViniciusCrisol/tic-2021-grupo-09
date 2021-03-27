@@ -14,23 +14,23 @@ export class CreateAccountsTable1616337910999 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'name',
+            name: 'user_name',
             type: 'varchar',
             length: '60',
           },
           {
-            name: 'email',
+            name: 'user_email',
             type: 'varchar',
             length: '60',
             isUnique: true,
           },
           {
-            name: 'password_hash',
+            name: 'account_name',
             type: 'varchar',
             length: '60',
           },
           {
-            name: 'account_name',
+            name: 'password_hash',
             type: 'varchar',
             length: '60',
           },

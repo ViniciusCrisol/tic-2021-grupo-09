@@ -4,15 +4,15 @@ import AuthenticateAccountService from '@modules/Accounts/services/AuthenticateA
 
 export default class AccountSessionsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { email, password } = request.body;
+    const { user_email, password } = request.body;
 
     const authenticateAccount = container.resolve(AuthenticateAccountService);
     const { account, token } = await authenticateAccount.execute({
-      email,
+      user_email,
       password,
     });
 
-    const { id, name } = account;
-    return response.json({ account: { id, name, email }, token });
+    const { id } = account;
+    return response.json({ account: { id, user_email }, token });
   }
 }

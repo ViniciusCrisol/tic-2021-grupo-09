@@ -32,16 +32,16 @@ describe('Authenticate Account', () => {
     );
 
     account = await createAccount.execute({
-      name: 'John Doe',
-      email: 'john@example.com',
-      account_name: 'JohnDoeAccount',
       password: 'password',
+      user_name: 'John Doe',
+      user_email: 'john@example.com',
+      account_name: 'JohnDoeAccount',
     });
   });
 
   it('Should be able to authenticate.', async () => {
     const response = await authenticateAccount.execute({
-      email: 'john@example.com',
+      user_email: 'john@example.com',
       password: 'password',
     });
 
@@ -52,7 +52,7 @@ describe('Authenticate Account', () => {
   it('Should not be able to authenticate with a wrong email.', async () => {
     await expect(
       authenticateAccount.execute({
-        email: 'wrongJohn@example.com',
+        user_email: 'wrongJohn@example.com',
         password: 'password',
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -61,7 +61,7 @@ describe('Authenticate Account', () => {
   it('Should not be able to authenticate with a wrong password.', async () => {
     await expect(
       authenticateAccount.execute({
-        email: 'john@example.com',
+        user_email: 'john@example.com',
         password: 'wrongPassword',
       }),
     ).rejects.toBeInstanceOf(AppError);

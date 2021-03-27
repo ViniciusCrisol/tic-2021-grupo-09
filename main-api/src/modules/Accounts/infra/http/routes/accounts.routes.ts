@@ -9,8 +9,8 @@ accountsRoutes.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      name: Joi.string().required(),
-      email: Joi.string().email().required(),
+      user_name: Joi.string().required(),
+      user_email: Joi.string().email().required(),
       account_name: Joi.string().required(),
       password: Joi.string().required(),
     },

@@ -19,8 +19,10 @@ class FakeAccountsRepository implements IAccountsRepository {
     return response;
   }
 
-  public async findByEmail(email: string): Promise<Account | undefined> {
-    const response = this.accounts.find(account => account.email === email);
+  public async findByEmail(user_email: string): Promise<Account | undefined> {
+    const response = this.accounts.find(
+      account => account.user_email === user_email,
+    );
     return response;
   }
 }

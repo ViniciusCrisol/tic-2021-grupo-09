@@ -25,10 +25,10 @@ describe('Create Account', () => {
 
   it('Should be able to create a new account.', async () => {
     const account = await createAccount.execute({
-      name: 'John Doe',
-      email: 'john@example.com',
-      account_name: 'JohnDoeAccount',
       password: 'password',
+      user_name: 'John Doe',
+      user_email: 'john@example.com',
+      account_name: 'JohnDoeAccount',
     });
 
     expect(account).toHaveProperty('id');
@@ -36,18 +36,18 @@ describe('Create Account', () => {
 
   it('Should not be able to create a new account with same e-mail from another.', async () => {
     await createAccount.execute({
-      name: 'John Doe',
-      email: 'john@example.com',
-      account_name: 'JohnDoeAccount',
       password: 'password',
+      user_name: 'John Doe',
+      user_email: 'john@example.com',
+      account_name: 'JohnDoeAccount',
     });
 
     await expect(
       createAccount.execute({
-        name: 'John Doe',
-        email: 'john@example.com',
-        account_name: 'JohnDoeAccount',
         password: 'password',
+        user_name: 'John Doe',
+        user_email: 'john@example.com',
+        account_name: 'JohnDoeAccount',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

@@ -12,10 +12,10 @@ class Account {
   id: string;
 
   @Column({ length: 60 })
-  name: string;
+  user_name: string;
 
   @Column({ length: 60 })
-  email: string;
+  user_email: string;
 
   @Column({ length: 60 })
   account_name: string;

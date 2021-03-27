@@ -22,8 +22,10 @@ class AccountsRepository implements IAccountsRepository {
     return response;
   }
 
-  public async findByEmail(email: string): Promise<Account | undefined> {
-    const response = await this.ormRepository.findOne({ where: { email } });
+  public async findByEmail(user_email: string): Promise<Account | undefined> {
+    const response = await this.ormRepository.findOne({
+      where: { user_email },
+    });
     return response;
   }
 }

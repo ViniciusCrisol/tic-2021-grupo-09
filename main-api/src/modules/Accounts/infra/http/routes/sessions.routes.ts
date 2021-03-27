@@ -9,7 +9,7 @@ sessionsRoutes.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      email: Joi.string().email().required(),
+      user_email: Joi.string().email().required(),
       password: Joi.string().required(),
     },
   }),

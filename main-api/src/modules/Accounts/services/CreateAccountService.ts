@@ -12,9 +12,9 @@ import IAccountsRepository from '../repositories/IAccountsRepository';
 import Account from '../infra/typeorm/entities/Account';
 
 interface IRequest {
-  name: string;
-  email: string;
   password: string;
+  user_name: string;
+  user_email: string;
   account_name: string;
 }
 
@@ -32,20 +32,22 @@ class CreateAccountService {
   ) {}
 
   public async execute({
-    name,
-    email,
+    user_name,
+    user_email,
     password,
     account_name,
   }: IRequest): Promise<Account> {
-    const checkAccountExists = await this.accountsRepository.findByEmail(email);
+    const checkAccountExists = await this.accountsRepository.findByEmail(
+      user_email,
+    );
     if (checkAccountExists) {
       throw new AppError(emailAlreadyInUse.message);
     }
 
     const hashedPassword = await this.hashProvider.generateHash(password);
     const account = await this.accountsRepository.create({
-      name,
-      email,
+      user_name,
+      user_email,
       account_name,
       password_hash: hashedPassword,
     });
